@@ -7,7 +7,7 @@
 #define GRID_CELLS (GRID_COLS*GRID_ROWS)
 #define ALIVE '#'
 #define DEAD '.'
-#define CLEAR_SCREEN "\x1b\x5b\x33\x4a\x1b\x5b\x48\x1b\x5b\x32\x4a"
+#define RESET_CURSOR "\x1b\x5b\x48"
 
 //The function given x, y returns the index position in a linear array.
 //This function implements wrapping so both ends of the grid will wrap around
@@ -36,7 +36,7 @@ char getCell(const char *grid, int x, int y){
 //Show the grid on terminal
 //Automatically clears the console before printing next (VT100 escape sequence)
 void printGrid(const char *grid) {
-    fputs(CLEAR_SCREEN, stdout); //Cleans screen
+    fputs(RESET_CURSOR, stdout); //Cleans screen
     for (int rows = 0; rows < GRID_ROWS; rows++) {
         for (int cols = 0; cols < GRID_COLS; cols++) {
             putchar(getCell(grid, cols, rows));
