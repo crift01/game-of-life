@@ -95,7 +95,23 @@ int main() {
     setCell(old_grid, 11, 9, ALIVE);
     setCell(old_grid, 10, 8, ALIVE);
 
+    setCell(old_grid, 5, 30, ALIVE);
+    setCell(old_grid, 5, 29, ALIVE);
+    setCell(old_grid, 6, 29, ALIVE);
+    setCell(old_grid, 6, 28, ALIVE);
+    setCell(old_grid, 7, 28, ALIVE);
+    setCell(old_grid, 8, 28, ALIVE);
+    setCell(old_grid, 8, 27, ALIVE);
     
+    setCell(old_grid, 5, 30, ALIVE);
+    setCell(old_grid, 5, 29, ALIVE);
+    setCell(old_grid, 6, 29, ALIVE);
+    setCell(old_grid, 6, 28, ALIVE);
+    setCell(old_grid, 7, 28, ALIVE);
+    setCell(old_grid, 8, 28, ALIVE);
+    setCell(old_grid, 8, 27, ALIVE);
+
+
     while (1) {
         newState(old_grid, new_grid);
         printGrid(new_grid);
