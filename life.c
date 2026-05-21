@@ -36,7 +36,7 @@ char getCell(const char *grid, int x, int y){
 //Show the grid on terminal
 //Automatically clears the console before printing next (VT100 escape sequence)
 void printGrid(const char *grid) {
-    printf(CLEAR_SCREEN); //Cleans screen
+    fputs(CLEAR_SCREEN, stdout); //Cleans screen
     for (int rows = 0; rows < GRID_ROWS; rows++) {
         for (int cols = 0; cols < GRID_COLS; cols++) {
             putchar(getCell(grid, cols, rows));
@@ -84,6 +84,7 @@ int main() {
     char old_grid[GRID_CELLS];
     char new_grid[GRID_CELLS];
     setGrid(old_grid, DEAD);
+
     setCell(old_grid, 27, 3, ALIVE);
     setCell(old_grid, 27, 4, ALIVE);
     setCell(old_grid, 27, 5, ALIVE);
@@ -93,6 +94,8 @@ int main() {
     setCell(old_grid, 11, 10, ALIVE);
     setCell(old_grid, 11, 9, ALIVE);
     setCell(old_grid, 10, 8, ALIVE);
+
+    
     while (1) {
         newState(old_grid, new_grid);
         printGrid(new_grid);
