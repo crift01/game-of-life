@@ -12,11 +12,11 @@
 //The function given x, y returns the index position in a linear array.
 //This function implements wrapping so both ends of the grid will wrap around
 int getPosition(int x, int y) {
-    x = x % GRID_COLS;
-    if(x < 0) x += GRID_COLS;
+    if (x < 0) x = GRID_COLS - 1;
+    else if (x >= GRID_COLS) x = 0;
 
-    y = y % GRID_ROWS;
-    if(y < 0) y += GRID_ROWS;
+    if (y < 0) y = GRID_ROWS - 1;
+    else if (y >= GRID_ROWS) y = 0;
 
     return y*GRID_COLS + x;
 }
@@ -111,14 +111,18 @@ int main() {
     setCell(old_grid, 8, 28, ALIVE);
     setCell(old_grid, 8, 27, ALIVE);
 
+    char *current = old_grid;
+    char *next = new_grid;
 
     while (1) {
-        newState(old_grid, new_grid);
-        printGrid(new_grid);
+        newState(current, next);
+        printGrid(next);
         usleep(100000);
-        newState(new_grid, old_grid);
-        printGrid(old_grid);
-        usleep(100000);
+
+        //I swap the pointers so next becomes the current for the next loop
+        char *temp = current;
+        current = next;
+        next = temp;
     }
     return 0;
 }
